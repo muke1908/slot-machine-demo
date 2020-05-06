@@ -1,13 +1,15 @@
-> This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).  
+
+DEMO: https://muke1908.github.io/slot-machine-demo/
 
 ## Slot Machine
 
 This is a slot machine implementation having following features:
 - Configurable reels (`./config/slot`, `./config/reel`)
-- Supports bias in each reel
+- Supports bias in each reel.
 - Configurable pay tables (`./config/paytable`)
-- Balance indicator
-- Debug mode
+- Balance indicator.
+- Debug mode - debug mode will allow you to set a *symbol* at any position in each *reel*. However, the wining combination will be decided based on the paytable configuration.
 
 ## Configs  
 
@@ -23,7 +25,7 @@ This is a slot machine implementation having following features:
 | Variables   |      Description      |  Type |
 |----------|-------------|------|
 | `slotSpeed` |  No of symbol/sec while spinning   |   `Number` |
-| `noOfVisibleSymbol` |  No of visible symbol in a reel   |   `Number` |
+| `reelSpinDelay` |  Delay in stopping spins from left to right   |   `Number` |
 | `winningLabels` |  Winning labels in their vertical order   |   `Array` |
 | `spinDuration` |  Spin duration in seconds   |   `Number` |
 | `reelsCount` |  No of reels in slot   |   `Number` |
@@ -37,6 +39,7 @@ This is a slot machine implementation having following features:
 | `spinCost` |  No of coin required for each spin | Number |
 | `winningCombination` |    The combination that defines wining line and winning amount   |   `Array` |
 
+**NOTE:** Paytable supports any types (horizontal) of winning combinations. The final result will consider the **order** of combination in the table - *Latter will override the former*
 
 4. **Player** - `/config/user.js`  
 
@@ -48,5 +51,5 @@ This is a slot machine implementation having following features:
 
 
 
-## Installation  
+## Start the app  
 ```npm start```
