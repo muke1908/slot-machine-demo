@@ -15,7 +15,7 @@ import payTableConfig from '../config/payTable';
 
 
 const { spinDuration, reelsCount } = slotConfig;
-const { winningCombination, spinCost } = payTableConfig;
+const { spinCost } = payTableConfig;
 
 
 
@@ -36,18 +36,29 @@ const Wrapper = styled.div`
 `
 
 const Slots = () => {
-    const { gameResult, setGameResult, balance, setBalance, winAmount, setWinAmount, debugMode, debugConfig } = useContext(GameContext);
+    const {
+        gameResult,
+        gameLoading,
+        setGameResult,
+        setGameLoadingState,
+        balance,
+        setBalance,
+        winAmount,
+        setWinAmount,
+        debugMode,
+        debugConfig
+    } = useContext(GameContext);
 
     const [ spinState, setSpinState ] = useState(false);
     const [ landingPositions, setLandingPosition ] = useState([]);
     const [ reel, setReelImage ] = useState('');
 
     const spin = ()=> {
-        if(spinState) {
+        if(spinState || gameLoading) {
             return true
         }
 
-        if(balance < 1) {
+        if((balance-spinCost) < 0) {
             alert('Insufficient coin!');
             return
         }
@@ -56,14 +67,15 @@ const Slots = () => {
 
         setLandingPosition(getRandomPositions)
         setSpinState(true);
+        setGameLoadingState(true);
         setGameResult(null);
 
         setTimeout(()=> {
             setSpinState(false);
-            const gameResult = getSpinResult(winningCombination, getRandomPositions);
+            const gameResult = getSpinResult(getRandomPositions);
             setGameResult(gameResult);
-
             setWinAmount(winAmount+(gameResult.winAmount || 0));
+            setGameLoadingState(false);
         }, (spinDuration*1000))
     }
 

@@ -40,6 +40,7 @@ const CombinationRowContainer = styled.div`
         font-size: 20px;
         padding: 20px 10px;
         background: #000;
+        color:#FFCA00;
     }
 `
 
@@ -47,7 +48,7 @@ const Combinations = ({ combinations, line, winingRow, symbolIndex })=> {
 
     return(
         <CombinationRowContainer>
-            <div className='header'>Wining Line: {line}</div>
+            <div className='header'>{line}</div>
             {
                 combinations.map(({ symbols, winingAmount }, index)=> {
                     const shouldBlink = winingRow && (index === symbolIndex);

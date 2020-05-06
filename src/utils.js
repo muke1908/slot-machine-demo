@@ -1,7 +1,9 @@
 import slotConfig from './config/slot';
 import reelConfig from './config/reel';
+import payTableConfig from './config/payTable';
 
 const { reelsCount, winningLabels, slotBias } = slotConfig;
+const { winningCombination  } = payTableConfig;
 
 export const iterable = (length = 0) => {
     return [...Array((length))]
@@ -75,7 +77,7 @@ const getAllPositionsSym = (currentPosition, currentSymbol)=> {
 }
 
 // return line if symbols landed in wining position
-export const getSpinResult = (winningCombination, spinResult)=> {
+export const getSpinResult = (spinResult)=> {
     const resultMatrix = [];
     spinResult.map(({ position, symbol }, row)=> {
         resultMatrix[row] = getAllPositionsSym(position, symbol);
@@ -93,23 +95,44 @@ export const getSpinResult = (winningCombination, spinResult)=> {
     let symbolIndex = -1;
     let lineIndex = -1;
     let winAmount = 0;
+    let winingLabelIndex = 0;
 
-    winningCombination.forEach(({ line: lineToMatch, combinations }, index)=> {
+    for(let index in winningCombination) {
+        const { line: lineToMatch, combinations } =  winningCombination[index];
+        if(lineToMatch === 'ANY') {
+            for(let j in transposed) {
+                const { line, symbols: symbolsToMatch } = transposed[j];
+                const matchIndex = combinations.findIndex(({ symbols }, index)=> {
+                    return symbols.join('_') === symbolsToMatch
+                })
 
-        const symbolsToMatch = transposed.find(({ line })=>line === lineToMatch).symbols;
-        const matchIndex = combinations.findIndex(({ symbols }, index)=> {
-            return symbols.join('_') === symbolsToMatch
-        })
+                if(matchIndex > -1) {
+                    winingLabelIndex = Number(winningLabels.indexOf(line));
+                    lineIndex = Number(index);
+                    symbolIndex = Number(matchIndex);
+                    winAmount = combinations[matchIndex].winingAmount;
+                    break;
+                }
+            }
+        }else {
+            const { line, symbols: symbolsToMatch } = transposed.find(({ line })=>line === lineToMatch);
+            const matchIndex = combinations.findIndex(({ symbols }, index)=> {
+                return symbols.join('_') === symbolsToMatch
+            })
 
-        if(matchIndex > -1) {
-            lineIndex = index;
-            symbolIndex = matchIndex;
-            winAmount = combinations[matchIndex].winingAmount
+            if(matchIndex > -1) {
+                winingLabelIndex = Number(winningLabels.indexOf(line));
+                lineIndex = Number(index);
+                symbolIndex = Number(matchIndex);
+                winAmount = combinations[matchIndex].winingAmount
+                break;
+            }
         }
-    })
+    }
 
     if(symbolIndex > -1 && lineIndex > -1) {
         return {
+            winingLabelIndex,
             symbolIndex,
             lineIndex,
             winAmount

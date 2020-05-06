@@ -28,6 +28,8 @@ const Wrapper = styled.div`
 const Footer = styled.div`
     display: flex;
     padding: 20px;
+    opacity: ${props => props.gameLoading ? 0.5 : 1};
+    pointer-events: ${props => props.gameLoading ? 'none' : 'all'};
     .balance {
         flex: 1;
     }
@@ -76,7 +78,7 @@ const App = ()=> {
                     <PayTable />
                 </div>
             </Wrapper>
-            <Footer>
+            <Footer gameLoading={gameLoading}>
                 <div className='balance'>
                     <Balance balance={balance} onClick={updateBalance} winAmount={winAmount}/>
                 </div>

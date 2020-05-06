@@ -33,7 +33,7 @@ const WiningLine = ({ gameResult }) => {
         return null;
     }
 
-    const transformDelta = (gameResult.lineIndex * 100) + 60;
+    const transformDelta = (gameResult.winingLabelIndex * 100) + 60;
 
     return(
         <WiningLineBody transform={transformDelta}/>

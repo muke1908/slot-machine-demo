@@ -5,47 +5,45 @@ const payTable = {
             line: 'TOP',
             combinations: [
                 {
-                    symbols: ['2xbar', 'bar', '3xbar'],
+                    symbols: ['cherry', 'cherry', 'cherry'],
                     winingAmount: 2000
                 },
                 {
-                    symbols: ['cherry', 'cherry', 'seven'],
-                    winingAmount: 75
-                },
-                {
-                    symbols: ['cherry', 'seven', 'bar'],
+                    symbols: ['2xbar', 'cherry', '3xbar'],
                     winingAmount: 75
                 }
             ]
 
-        },
-        {
+        }, {
             line: 'CENTER',
             combinations: [
                 {
-                    symbols: ['cherry', 'cherry', 'seven'],
-                    winingAmount: 75
-                },
-                {
-                    symbols: ['cherry', 'seven', 'bar'],
-                    winingAmount: 75
+                    symbols: ['cherry', 'cherry', 'cherry'],
+                    winingAmount: 1000
                 }, {
-                    symbols: ['cherry', '2xbar', 'seven'],
-                    winingAmount: 75
+                    symbols: ['bar', 'bar', 'bar'],
+                    winingAmount: 50
                 }
             ]
 
-        },
-        {
+        }, {
             line: 'BOTTOM',
             combinations: [
                 {
-                    symbols: ['2xbar', 'bar', '3xbar'],
-                    winingAmount: 2000
-                },
+                    symbols: ['cherry', 'cherry', 'cherry'],
+                    winingAmount: 4000
+                }
+            ]
+
+        }, {
+            line: 'ANY',
+            combinations: [
                 {
-                    symbols: ['cherry', 'cherry', 'seven'],
-                    winingAmount: 75
+                    symbols: ['seven', 'seven', 'seven'],
+                    winingAmount: 150
+                }, {
+                    symbols: ['3xbar', '3xbar', '3xbar'],
+                    winingAmount: 50
                 }
             ]
 

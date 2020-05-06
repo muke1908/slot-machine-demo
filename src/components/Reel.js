@@ -21,6 +21,17 @@ const ReelContainer = styled.div`
     border: 2px solid #fff;
     border-radius: 3px;
     padding: 4px;
+    position: relative;
+`
+
+const ReelOverlay = styled.div`
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: linear-gradient(180deg, rgba(0,0,0,1) 0px,rgba(0,0,0,0) 57px, rgba(0,0,0,0) 227px, rgba(0,0,0,1) 100%);
 `
 
 const Reel = ({row, spinState, landingPositions, reel })=> {
@@ -70,10 +81,12 @@ const Reel = ({row, spinState, landingPositions, reel })=> {
 
     return (
     <ReelContainer>
+        <ReelOverlay />
         <div className="reel-spinner" style={{
             backgroundImage: `url(${reel})`,
             height: '300px',
             backgroundColor: '#fff',
+            backgroundRepeatX: 'no-repeat',
             backgroundRepeatY: 'repeat',
             backgroundPosition: `center ${pos}px`,
             transition: 'background-position ease-in-out',
