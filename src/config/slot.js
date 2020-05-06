@@ -1,6 +1,5 @@
 const slotConfig = {
-    slotSpeed: 2, // 1 symbol per second
-    noOfVisibleSymbol : 3,
+    slotSpeed: 2, // 1 symbol per second    
     winningLabels: ['TOP', 'CENTER', 'BOTTOM'],
     spinDuration: 2, // in second
     reelsCount: 3,

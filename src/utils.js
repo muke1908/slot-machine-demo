@@ -8,6 +8,13 @@ export const iterable = (length = 0) => {
 }
 
 export const getRandomFromArray = (array) => {
+    const isArray = array && Array.isArray(array);
+    const validArrayLength = !!array.length;
+    const isValid = isArray && validArrayLength;
+
+    if(!isValid) {
+        throw 'Pass valid array with atleast 1 element';
+    }
     return array[Math.floor(Math.random() * array.length)];
 }
 
@@ -23,7 +30,7 @@ export const imgAsyncLoad = (src) => {
 }
 
 export const getInitialDebugOptions = ()=> {
-    const symbols = reelConfig.symbols.map(({name})=>name);
+    const symbols = reelConfig.symbols.map(({ name })=>name);
     return iterable(reelsCount).map((item, index) => {
         return {
             position: winningLabels[0],
@@ -36,7 +43,6 @@ export const getRandomLandingPosition = () => {
     const symbols = reelConfig.symbols.map(({name})=>name);
 
     return iterable(reelsCount).map((item, index) => {
-        console.log(slotBias[index] );
         return {
             position: getRandomFromArray(winningLabels),
             symbol: getRandomFromArray(slotBias[index]  || symbols)
