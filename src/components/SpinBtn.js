@@ -46,7 +46,7 @@ const SpinBtn = ({ onClick, gameLoading })=> {
     }
     return (
         <Wrapper>
-            <a className={gameLoading && 'disabled'} id="spin_btn" onClick={(e)=>clickHandler(e)}>Spin</a>
+            <a className={gameLoading ? 'disabled' : ''} id="spin_btn" onClick={(e)=>clickHandler(e)}>Spin</a>
         </Wrapper>
     );
 }

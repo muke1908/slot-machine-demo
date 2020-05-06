@@ -77,7 +77,7 @@ const getAllPositionsSym = (currentPosition, currentSymbol)=> {
 }
 
 // return line if symbols landed in wining position
-export const getSpinResult = (spinResult)=> {
+export const getSpinResult = (spinResult)=> {    
     const resultMatrix = [];
     spinResult.map(({ position, symbol }, row)=> {
         resultMatrix[row] = getAllPositionsSym(position, symbol);
