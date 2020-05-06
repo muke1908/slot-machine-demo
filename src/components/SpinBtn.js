@@ -31,15 +31,22 @@ const Wrapper = styled.div`
         transform: translateY(4px);
     }
 
+    .disabled {
+        opacity: 0.5;
+        background-color: #FFCA00;
+        box-shadow: 0 5px #FF9900;
+        transform: translateY(4px);
+        pointer-events: none;
+    }
 `
-const SpinBtn = ({ onClick })=> {
+const SpinBtn = ({ onClick, gameLoading })=> {
     const clickHandler = (e)=> {
         e.preventDefault();
         onClick()
     }
     return (
         <Wrapper>
-            <a id="spin_btn" onClick={(e)=>clickHandler(e)}>Spin</a>
+            <a className={gameLoading && 'disabled'} id="spin_btn" onClick={(e)=>clickHandler(e)}>Spin</a>
         </Wrapper>
     );
 }

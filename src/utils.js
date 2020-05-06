@@ -140,5 +140,4 @@ export const getSpinResult = (spinResult)=> {
     }
 
     return false
-
 }

@@ -1,9 +1,12 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, useRef } from 'react';
 import styled from 'styled-components';
-import Reel from '../components/Reel';
-import SpinBtn from '../components/SpinBtn';
-import DebugComponent from '../components/DebugComponent';
-import WiningLine from '../components/WiningLine';
+
+import {
+    ReelHOC,
+    SpinBtn,
+    DebugComponent,
+    WiningLine
+} from '../components';
 
 import GameContext from '../context';
 
@@ -13,8 +16,9 @@ import reelConfig from '../config/reel';
 import slotConfig from '../config/slot';
 import payTableConfig from '../config/payTable';
 
+import winAudio from '../assets/win.mp3';
 
-const { spinDuration, reelsCount } = slotConfig;
+const { spinDuration, reelsCount, reelSpinDelay } = slotConfig;
 const { spinCost } = payTableConfig;
 
 
@@ -53,6 +57,20 @@ const Slots = () => {
     const [ landingPositions, setLandingPosition ] = useState([]);
     const [ reel, setReelImage ] = useState('');
 
+    const reelSpinTransitionDelay = (reelsCount * reelSpinDelay * 1000);
+
+    const audioRef = useRef();
+
+
+    const finishGame = (gameResult)=> {
+        setTimeout(()=> {
+            gameResult && audioRef.current.play();
+            setGameResult(gameResult);
+            setWinAmount(winAmount+(gameResult.winAmount || 0));
+            setGameLoadingState(false);
+        }, reelSpinTransitionDelay)
+    }
+
     const spin = ()=> {
         if(spinState || gameLoading) {
             return true
@@ -64,6 +82,7 @@ const Slots = () => {
         }
         setBalance(balance - Number(spinCost))
         const getRandomPositions = debugMode ? debugConfig : getRandomLandingPosition();
+        const gameResult = getSpinResult(getRandomPositions);
 
         setLandingPosition(getRandomPositions)
         setSpinState(true);
@@ -72,10 +91,7 @@ const Slots = () => {
 
         setTimeout(()=> {
             setSpinState(false);
-            const gameResult = getSpinResult(getRandomPositions);
-            setGameResult(gameResult);
-            setWinAmount(winAmount+(gameResult.winAmount || 0));
-            setGameLoadingState(false);
+            finishGame(gameResult)
         }, (spinDuration*1000))
     }
 
@@ -102,11 +118,12 @@ const Slots = () => {
         <Wrapper>
             <SlotsContainer>
                 <WiningLine gameResult={gameResult}/>
+                <audio ref={audioRef} src={winAudio} preload="auto"/>
                 {
                     iterable(reelsCount).map((item, index) => {
                         return(
                             <div className='reel-wrapper' key={index}>
-                                <Reel
+                                <ReelHOC
                                     reel={reel}
                                     landingPositions={landingPositions[index]}
                                     row={index}
@@ -118,7 +135,7 @@ const Slots = () => {
                     })
                 }
             </SlotsContainer>
-            <SpinBtn onClick={spin}/>
+            <SpinBtn onClick={spin} gameLoading={gameLoading}/>
         </Wrapper>
     )
 }
