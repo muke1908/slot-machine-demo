@@ -1,13 +1,13 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## SLOT Machine
+## Slot Machine
 
-This is a slot machine implementation having following features:  
-[x] - Configurable reels (./config/slot, ./config/reel)
-[x] - Supports bias in each reel
-[x] - Configurable pay tables (./config/paytable)
-[x] - Balance indicator
-[x] - Debug mode
+This is a slot machine implementation having following features:
+- Configurable reels (./config/slot, ./config/reel)
+- Supports bias in each reel
+- Configurable pay tables (./config/paytable)
+- Balance indicator
+- Debug mode
 
 
 
