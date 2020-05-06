@@ -135,7 +135,7 @@ const Slots = () => {
                     })
                 }
             </SlotsContainer>
-            <SpinBtn onClick={spin} gameLoading={gameLoading}/>
+            <SpinBtn onClick={spin} gameLoading={gameLoading} spinCost={spinCost}/>
         </Wrapper>
     )
 }

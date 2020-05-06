@@ -47,7 +47,7 @@ const BalanceWrapper = styled.div`
 const Balance = ({ balance, winAmount, onClick })=> {
 
     const [ newBalance, setNewBalance ] = useState('');
-    const validationString = `Enter a number from ${maxReloadAmount} to ${minReloadAmount}`;
+    const validationString = `Enter number of coin from ${maxReloadAmount} to ${minReloadAmount}`;
 
     const updateBalance = (e, updateAmount) => {
         e.preventDefault();
@@ -66,7 +66,7 @@ const Balance = ({ balance, winAmount, onClick })=> {
             <div className='item'>
                 <span className='winAmount'>Won {winAmount}!</span>
                 <br/>
-                You have { balance } coins
+                Balance { balance } coins
             </div>
             <div>
                 <input type='text' value={newBalance} onChange={(e)=>setNewBalance(e.target.value)}/>

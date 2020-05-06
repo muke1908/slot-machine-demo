@@ -18,7 +18,7 @@ import { getInitialDebugOptions } from './utils';
 const Wrapper = styled.div`
     display: flex;
     padding:10px;
-    justify-content: center;
+    justify-content: center;    
     & > div {
         display: flex;
         margin: 10px;

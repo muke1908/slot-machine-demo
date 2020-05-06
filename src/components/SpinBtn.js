@@ -6,6 +6,7 @@ const Wrapper = styled.div`
     align-items: center;
     justify-content: center;
     padding: 20px;
+    flex-direction: column;
 
     #spin_btn {
         text-transform: uppercase;
@@ -39,7 +40,7 @@ const Wrapper = styled.div`
         pointer-events: none;
     }
 `
-const SpinBtn = ({ onClick, gameLoading })=> {
+const SpinBtn = ({ onClick, gameLoading, spinCost })=> {
     const clickHandler = (e)=> {
         e.preventDefault();
         onClick()
@@ -47,6 +48,8 @@ const SpinBtn = ({ onClick, gameLoading })=> {
     return (
         <Wrapper>
             <a className={gameLoading ? 'disabled' : ''} id="spin_btn" onClick={(e)=>clickHandler(e)}>Spin</a>
+            <br/>
+            Bet {spinCost} Coin
         </Wrapper>
     );
 }

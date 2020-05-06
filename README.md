@@ -9,7 +9,7 @@ This is a slot machine implementation having following features:
 - Supports bias in each reel.
 - Configurable pay tables (`./config/paytable`)
 - Balance indicator.
-- Debug mode - debug mode will allow you to set a *symbol* at any position in each *reel*. However, the wining combination will be decided based on the paytable configuration.
+- Debug mode - debug mode will allow you to set a *symbol* at any position in each *reel*. However, the wining combination will be decided based on the pay table configuration.
 
 ## Configs  
 
@@ -39,7 +39,7 @@ This is a slot machine implementation having following features:
 | `spinCost` |  No of coin required for each spin | Number |
 | `winningCombination` |    The combination that defines wining line and winning amount   |   `Array` |
 
-**NOTE:** Paytable supports any types (horizontal) of winning combinations. The final result will consider the **order** of combination in the table - *Latter will override the former*
+**NOTE:** Pay table supports any types (horizontal) of winning combinations. The final result will consider the **order** of combination in the table - *Winning combination will be the first matched combination in pay table*
 
 4. **Player** - `/config/user.js`  
 
