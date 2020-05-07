@@ -77,7 +77,7 @@ const getAllPositionsSym = (currentPosition, currentSymbol)=> {
 }
 
 // return line if symbols landed in wining position
-export const getSpinResult = (spinResult)=> {    
+export const getSpinResult = (spinResult)=> {
     const resultMatrix = [];
     spinResult.map(({ position, symbol }, row)=> {
         resultMatrix[row] = getAllPositionsSym(position, symbol);
@@ -140,4 +140,14 @@ export const getSpinResult = (spinResult)=> {
     }
 
     return false
+}
+
+export const createAndGetCanvasCtx = (document, { width= 100, height= 100 }) => {
+
+    const canvas = document.createElement('canvas');
+    canvas.width = width;
+    canvas.height = height;
+
+    const context = canvas.getContext('2d');
+    return { canvas, context };
 }

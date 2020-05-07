@@ -10,7 +10,13 @@ import {
 
 import GameContext from '../context';
 
-import { iterable, imgAsyncLoad, getSpinResult, getRandomLandingPosition } from '../utils';
+import {
+    iterable,
+    imgAsyncLoad,
+    getSpinResult,
+    getRandomLandingPosition,
+    createAndGetCanvasCtx
+} from '../utils';
 
 import reelConfig from '../config/reel';
 import slotConfig from '../config/slot';
@@ -57,13 +63,15 @@ const Slots = () => {
     const [ landingPositions, setLandingPosition ] = useState([]);
     const [ reel, setReelImage ] = useState('');
 
+
     const reelSpinTransitionDelay = (reelsCount * reelSpinDelay * 1000);
 
     const audioRef = useRef();
-
+    const spinTimeOutRef = useRef();
+    const displayGameResultTimeoutRef = useRef();
 
     const finishGame = (gameResult)=> {
-        setTimeout(()=> {
+        displayGameResultTimeoutRef.current = setTimeout(()=> {
             gameResult && audioRef.current.play();
             setGameResult(gameResult);
             setWinAmount(winAmount+(gameResult.winAmount || 0));
@@ -89,36 +97,44 @@ const Slots = () => {
         setGameLoadingState(true);
         setGameResult(null);
 
-        setTimeout(()=> {
+        spinTimeOutRef.current = setTimeout(()=> {
             setSpinState(false);
             finishGame(gameResult)
         }, (spinDuration*1000))
     }
 
     const imageFromCanvas = async () => {
-        const canvas = document.createElement('canvas');
-        canvas.width = 100;
-        canvas.height = reelConfig.symbols.length*100;
-
-        const context = canvas.getContext('2d');
+        const { canvas, context } = createAndGetCanvasCtx(document,
+            {
+                width: 100,
+                height: (reelConfig.symbols.length*100)
+            }
+        )
 
         await Promise.all(reelConfig.symbols.map(async ({image}, index)=> {
             const img = await imgAsyncLoad(image);
-            context.drawImage(img, 0, (index*100), 100, 100);
+            context.drawImage(img, 20, (index*100)+20, 60, 60);
         }))
         const reel = canvas.toDataURL("image/png");
         setReelImage(reel);
     }
 
     useEffect(()=> {
-        imageFromCanvas()
+        imageFromCanvas();
+
+        return ()=> {
+            clearTimeout(spinTimeOutRef.current);
+            clearTimeout(spinTimeOutRef.current);
+        }
     }, [])
 
     return(
         <Wrapper>
             <SlotsContainer>
                 <WiningLine gameResult={gameResult}/>
-                <audio ref={audioRef} src={winAudio} preload="auto"/>
+                <audio ref={audioRef} preload="auto">
+                    <source type="audio/mp3" src={winAudio} />
+                </audio>
                 {
                     iterable(reelsCount).map((item, index) => {
                         return(
