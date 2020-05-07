@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "8e29348f5032517d82ac99da770f3a04",
+    "revision": "b289e998893b0aab9deaa15f351ac223",
     "url": "/slot-machine-demo/index.html"
   },
   {
-    "revision": "84deb3dd20ba33e983d5",
-    "url": "/slot-machine-demo/static/css/main.de948ea3.chunk.css"
+    "revision": "3c1472a91733682472fe",
+    "url": "/slot-machine-demo/static/css/main.30e968bd.chunk.css"
   },
   {
-    "revision": "3ab39eab2013d98c0816",
-    "url": "/slot-machine-demo/static/js/2.6ad577eb.chunk.js"
+    "revision": "b4a1807ebf2c53ae9f9a",
+    "url": "/slot-machine-demo/static/js/2.77644271.chunk.js"
   },
   {
     "revision": "c64c486544348f10a6d6c716950bc223",
-    "url": "/slot-machine-demo/static/js/2.6ad577eb.chunk.js.LICENSE.txt"
+    "url": "/slot-machine-demo/static/js/2.77644271.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "84deb3dd20ba33e983d5",
-    "url": "/slot-machine-demo/static/js/main.8fc88a15.chunk.js"
+    "revision": "3c1472a91733682472fe",
+    "url": "/slot-machine-demo/static/js/main.70bfca4c.chunk.js"
   },
   {
     "revision": "31fcdc68d91ee6f9c3e8",
@@ -30,5 +30,9 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "2a9912fbae8eda320fcf544a9d145abf",
     "url": "/slot-machine-demo/static/media/body.2a9912fb.ttf"
+  },
+  {
+    "revision": "5cde0fba71ddd3ea2474b6603e419906",
+    "url": "/slot-machine-demo/static/media/win.5cde0fba.mp3"
   }
 ]);

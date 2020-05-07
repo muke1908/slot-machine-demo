@@ -1,24 +1,25 @@
 {
   "files": {
-    "main.css": "/slot-machine-demo/static/css/main.de948ea3.chunk.css",
-    "main.js": "/slot-machine-demo/static/js/main.8fc88a15.chunk.js",
-    "main.js.map": "/slot-machine-demo/static/js/main.8fc88a15.chunk.js.map",
+    "main.css": "/slot-machine-demo/static/css/main.30e968bd.chunk.css",
+    "main.js": "/slot-machine-demo/static/js/main.70bfca4c.chunk.js",
+    "main.js.map": "/slot-machine-demo/static/js/main.70bfca4c.chunk.js.map",
     "runtime-main.js": "/slot-machine-demo/static/js/runtime-main.d7b2671d.js",
     "runtime-main.js.map": "/slot-machine-demo/static/js/runtime-main.d7b2671d.js.map",
-    "static/js/2.6ad577eb.chunk.js": "/slot-machine-demo/static/js/2.6ad577eb.chunk.js",
-    "static/js/2.6ad577eb.chunk.js.map": "/slot-machine-demo/static/js/2.6ad577eb.chunk.js.map",
+    "static/js/2.77644271.chunk.js": "/slot-machine-demo/static/js/2.77644271.chunk.js",
+    "static/js/2.77644271.chunk.js.map": "/slot-machine-demo/static/js/2.77644271.chunk.js.map",
     "index.html": "/slot-machine-demo/index.html",
-    "precache-manifest.fe2638ceafd2c52a594d3da036a7f188.js": "/slot-machine-demo/precache-manifest.fe2638ceafd2c52a594d3da036a7f188.js",
+    "precache-manifest.3f47e274a5c2623a308fd3f825098d83.js": "/slot-machine-demo/precache-manifest.3f47e274a5c2623a308fd3f825098d83.js",
     "service-worker.js": "/slot-machine-demo/service-worker.js",
-    "static/css/main.de948ea3.chunk.css.map": "/slot-machine-demo/static/css/main.de948ea3.chunk.css.map",
-    "static/js/2.6ad577eb.chunk.js.LICENSE.txt": "/slot-machine-demo/static/js/2.6ad577eb.chunk.js.LICENSE.txt",
+    "static/css/main.30e968bd.chunk.css.map": "/slot-machine-demo/static/css/main.30e968bd.chunk.css.map",
+    "static/js/2.77644271.chunk.js.LICENSE.txt": "/slot-machine-demo/static/js/2.77644271.chunk.js.LICENSE.txt",
     "static/media/Cherry.png": "/slot-machine-demo/static/media/Cherry.565a5779.png",
-    "static/media/index.css": "/slot-machine-demo/static/media/body.2a9912fb.ttf"
+    "static/media/index.css": "/slot-machine-demo/static/media/body.2a9912fb.ttf",
+    "static/media/win.mp3": "/slot-machine-demo/static/media/win.5cde0fba.mp3"
   },
   "entrypoints": [
     "static/js/runtime-main.d7b2671d.js",
-    "static/js/2.6ad577eb.chunk.js",
-    "static/css/main.de948ea3.chunk.css",
-    "static/js/main.8fc88a15.chunk.js"
+    "static/js/2.77644271.chunk.js",
+    "static/css/main.30e968bd.chunk.css",
+    "static/js/main.70bfca4c.chunk.js"
   ]
 }
